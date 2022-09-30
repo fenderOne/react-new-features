@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
+// Notes App Mead
+// --------------
 const NoteApp = () => {
+  console.log('In NoteApp');
+
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
   const addNote = (e) => {
+    console.log('addNote');
+
     e.preventDefault();
     setNotes([
       ...notes,
@@ -22,14 +28,17 @@ const NoteApp = () => {
   };
 
   useEffect(() => {
+    console.log('in useEffect []')
     const notesData = JSON.parse(localStorage.getItem('notes'));
 
     if (notesData) {
+      console.log('---> setNotes', notesData)
       setNotes(notesData);
     }
   }, []);
 
   useEffect(() => {
+    console.log('in useEffect [notes]:', notes)
     localStorage.setItem('notes', JSON.stringify(notes));
   }, [notes]);
 
