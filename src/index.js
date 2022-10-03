@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 // Notes App Mead
 // --------------
 const NoteApp = () => {
+
   console.log('In NoteApp');
 
   const [notes, setNotes] = useState([]);
@@ -12,6 +13,7 @@ const NoteApp = () => {
   const [body, setBody] = useState('');
 
   const addNote = (e) => {
+
     console.log('addNote');
 
     e.preventDefault();
@@ -28,17 +30,22 @@ const NoteApp = () => {
   };
 
   useEffect(() => {
-    console.log('in useEffect []')
-    const notesData = JSON.parse(localStorage.getItem('notes'));
 
+    console.log('in useEffect []')
+
+    const notesData = JSON.parse(localStorage.getItem('notes'));
     if (notesData) {
+
       console.log('---> setNotes', notesData)
+
       setNotes(notesData);
     }
   }, []);
 
   useEffect(() => {
+
     console.log('in useEffect [notes]:', notes)
+
     localStorage.setItem('notes', JSON.stringify(notes));
   }, [notes]);
 
